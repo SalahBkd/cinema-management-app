@@ -26,6 +26,11 @@ public class CinemaRestController {
     @Autowired
     private TicketRepository ticketRepository;
 
+    @GetMapping("/")
+    public String login(){
+        return "authenticated successfully" ;
+    }
+
     @GetMapping(path = "/filmImage/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getImage(@PathVariable(name="id") Long id) throws Exception {
         Film film = filmRepository.findById(id).get();
