@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -12,28 +12,46 @@ export class CinemaService {
   constructor(private http: HttpClient) { }
 
   public getVilles(): Observable<any> {
-    return this.http.get(this.host + "/villes");
+    let username='user1';
+    let password='123';
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+    return this.http.get(this.host + "/villes", {headers});
   }
 
   getCinemas(ville: any): Observable<any> {
-    return this.http.get(ville._links.cinemas.href);
+    let username='user1';
+    let password='123';
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+    return this.http.get(ville._links.cinemas.href, {headers});
   }
 
   getSalles(cinema: any): Observable<any> {
-    return this.http.get(cinema._links.salles.href);
+    let username='user1';
+    let password='123';
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+    return this.http.get(cinema._links.salles.href, {headers});
   }
 
   getProjections(salle: any): Observable<any> {
+    let username='user1';
+    let password='123';
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
     let url = salle._links.projections.href.replace("{?projection}", "");
-    return this.http.get(url + "?projection=p1");
+    return this.http.get(url + "?projection=p1", {headers});
   }
 
   getTicketsOfPlaces(projection: any): Observable<any> {
+    let username='user1';
+    let password='123';
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
     let url = projection._links.tickets.href.replace("{?projection}", "");
-    return this.http.get(url + "?projection=ticketProjection");
+    return this.http.get(url + "?projection=ticketProjection", {headers});
   }
 
   payetTickets(dataForm: any): Observable<any> {
-    return this.http.post(this.host + "/payerTickets", dataForm);
+    let username='user1';
+    let password='123';
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+    return this.http.post(this.host + "/payerTickets", dataForm, {headers});
   }
 }

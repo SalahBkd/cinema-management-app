@@ -7,11 +7,13 @@ import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CinemaComponent
+    CinemaComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,

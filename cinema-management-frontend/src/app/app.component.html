@@ -4,7 +4,8 @@
       <a class="navbar-brand" href="#">GestionCinemas</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a routerLink="/cinema">Cinema</a></li>
+      <li *ngIf="!isAuth()"><a routerLink="/login">Login</a></li>
+      <li *ngIf="isAuth()"><a routerLink="/cinema">Cinema</a></li>
     </ul>
   </div>
 </nav>
